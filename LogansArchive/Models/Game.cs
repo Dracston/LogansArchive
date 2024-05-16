@@ -16,8 +16,7 @@ namespace LogansArchive.Models
 
         [Required]
         public string Console { get; set; }
-        [Required]
-        public string Studio { get; set; }
+       
 
     }
 }

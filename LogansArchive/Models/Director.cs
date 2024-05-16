@@ -14,7 +14,6 @@ namespace LogansArchive.Models
         [Range(0, 120)]
         public int Age { get; set; }
 
-        [Required]
-        public string FilmDirected {  get; set; }
+       
     }
 }

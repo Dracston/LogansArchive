@@ -17,8 +17,7 @@ namespace LogansArchive.Models
         [Required]
         public string MovieFormat { get; set; }
 
-        [Required]
-        public string Studio {  get; set; }
+      
 
 
     }
