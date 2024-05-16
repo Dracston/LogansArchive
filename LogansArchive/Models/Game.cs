@@ -16,7 +16,9 @@ namespace LogansArchive.Models
 
         [Required]
         public string Console { get; set; }
-       
+
+        //Collection Navigation Property
+        public virtual ICollection<Game>? Games { get; set; }
 
     }
 }

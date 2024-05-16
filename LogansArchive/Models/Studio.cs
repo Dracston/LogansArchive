@@ -17,5 +17,8 @@ namespace LogansArchive.Models
         [Required]
         
         public string Address { get; set; }
+
+        //Collection Navigation Property
+        public virtual ICollection<Studio>? Studios { get; set; }
     }
 }
