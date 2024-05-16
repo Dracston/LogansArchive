@@ -1,3 +1,7 @@
+using LogansArchive.Data;
+using Microsoft.EntityFrameworkCore;
+
+
 namespace LogansArchive
 {
     public class Program
@@ -8,6 +12,10 @@ namespace LogansArchive
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+
+            // Set up the database context.
+            builder.Services.AddDbContext<MainArchiveContext>(options =>
+                options.UseSqlServer("Name=ConnectionStrings:DefaultConnection"));
 
             var app = builder.Build();
 
