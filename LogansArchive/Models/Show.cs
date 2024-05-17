@@ -19,6 +19,8 @@ namespace LogansArchive.Models
 
         [Required]
         public int episodeCount { get; set; }
+        [Required]
+        public string Director { get; set; }
 
         //Collection Navigation Property
         public virtual ICollection<Show>? Shows { get; set; }

@@ -54,7 +54,7 @@ namespace LogansArchive.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("showId,Title,firstDateAired,lastDateAired,episodeCount")] Show show)
+        public async Task<IActionResult> Create([Bind("showId,Title,firstDateAired,lastDateAired,episodeCount,Director")] Show show)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace LogansArchive.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("showId,Title,firstDateAired,lastDateAired,episodeCount")] Show show)
+        public async Task<IActionResult> Edit(int id, [Bind("showId,Title,firstDateAired,lastDateAired,episodeCount,Director")] Show show)
         {
             if (id != show.showId)
             {

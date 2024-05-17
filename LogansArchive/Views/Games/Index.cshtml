@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Console)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Studio)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -35,6 +38,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Console)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Studio)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.gameId">Edit</a> |

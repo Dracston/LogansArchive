@@ -17,6 +17,9 @@ namespace LogansArchive.Models
         [Required]
         public string MovieFormat { get; set; }
 
+        [Required]
+        public string Director { get; set; }
+
         //Collection Navigation Property
         public virtual ICollection<Movie>? Movies { get; set; }
 
