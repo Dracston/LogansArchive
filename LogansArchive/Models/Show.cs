@@ -23,6 +23,6 @@ namespace LogansArchive.Models
         public string Director { get; set; }
 
         //Collection Navigation Property
-        
+        public virtual ICollection<Show>? Shows { get; set; }
     }
 }

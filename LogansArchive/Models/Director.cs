@@ -5,7 +5,6 @@ namespace LogansArchive.Models
     public class Director
     {
         public int directorId { get; set; }
-       
       
 
         [Required]
@@ -16,8 +15,8 @@ namespace LogansArchive.Models
         [Range(0, 120)]
         public int Age { get; set; }
 
-       //Nullable Navigation Property
-      
+       //Collection Navigation Property
+       public virtual ICollection<Director>? Directors { get; set; }
        
     }
 }
