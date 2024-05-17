@@ -7,7 +7,7 @@ namespace LogansArchive.Models
 
         public int studioId { get; set; }
 
-        public int gameId { get; set; }
+        
        
 
         [Required]
@@ -22,7 +22,7 @@ namespace LogansArchive.Models
         public string Address { get; set; }
 
         //Nullable Navigation Property
-        public virtual Game? Games { get; set; }
+        public virtual ICollection<GameStudio> GameStudios { get; set; }
         
     }
 }

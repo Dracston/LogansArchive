@@ -23,7 +23,7 @@ namespace LogansArchive.Models
         public string Studio { get; set; }
 
         //Collection Navigation Property
-        public virtual ICollection<Studio>? Studioss { get; set; }
+        public virtual ICollection<GameStudio> GameStudios { get; set; }
 
     }
 }
