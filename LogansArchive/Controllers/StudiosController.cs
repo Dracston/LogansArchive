@@ -22,8 +22,7 @@ namespace LogansArchive.Controllers
         // GET: Studios
         public async Task<IActionResult> Index()
         {
-            var mainArchiveContext = _context.Studios.Include(s => s.Game);
-            return View(await mainArchiveContext.ToListAsync());
+            return View(await _context.Studios.ToListAsync());
         }
 
         // GET: Studios/Details/5
@@ -35,7 +34,6 @@ namespace LogansArchive.Controllers
             }
 
             var studio = await _context.Studios
-                .Include(s => s.Game)
                 .FirstOrDefaultAsync(m => m.studioId == id);
             if (studio == null)
             {
@@ -48,7 +46,6 @@ namespace LogansArchive.Controllers
         // GET: Studios/Create
         public IActionResult Create()
         {
-            ViewData["gameId"] = new SelectList(_context.Games, "gameId", "Console");
             return View();
         }
 
@@ -57,7 +54,7 @@ namespace LogansArchive.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("studioId,gameId,Name,yearEstablished,Address")] Studio studio)
+        public async Task<IActionResult> Create([Bind("studioId,Name,yearEstablished,Address")] Studio studio)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +62,6 @@ namespace LogansArchive.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["gameId"] = new SelectList(_context.Games, "gameId", "Console", studio.gameId);
             return View(studio);
         }
 
@@ -82,7 +78,6 @@ namespace LogansArchive.Controllers
             {
                 return NotFound();
             }
-            ViewData["gameId"] = new SelectList(_context.Games, "gameId", "Console", studio.gameId);
             return View(studio);
         }
 
@@ -91,7 +86,7 @@ namespace LogansArchive.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("studioId,gameId,Name,yearEstablished,Address")] Studio studio)
+        public async Task<IActionResult> Edit(int id, [Bind("studioId,Name,yearEstablished,Address")] Studio studio)
         {
             if (id != studio.studioId)
             {
@@ -118,7 +113,6 @@ namespace LogansArchive.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["gameId"] = new SelectList(_context.Games, "gameId", "Console", studio.gameId);
             return View(studio);
         }
 
@@ -131,7 +125,6 @@ namespace LogansArchive.Controllers
             }
 
             var studio = await _context.Studios
-                .Include(s => s.Game)
                 .FirstOrDefaultAsync(m => m.studioId == id);
             if (studio == null)
             {

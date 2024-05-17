@@ -12,23 +12,23 @@ namespace LogansArchive.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class DirectorsAPItroller : ControllerBase
+    public class DirectorsAPIController : ControllerBase
     {
         private readonly MainArchiveContext _context;
 
-        public DirectorsAPItroller(MainArchiveContext context)
+        public DirectorsAPIController(MainArchiveContext context)
         {
             _context = context;
         }
 
-        // GET: api/DirectorsAPItroller
+        // GET: api/DirectorsAPI
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Director>>> GetDirectors()
         {
             return await _context.Directors.ToListAsync();
         }
 
-        // GET: api/DirectorsAPItroller/5
+        // GET: api/DirectorsAPI/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Director>> GetDirector(int id)
         {
@@ -42,7 +42,7 @@ namespace LogansArchive.Controllers
             return director;
         }
 
-        // PUT: api/DirectorsAPItroller/5
+        // PUT: api/DirectorsAPI/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutDirector(int id, Director director)
@@ -73,7 +73,7 @@ namespace LogansArchive.Controllers
             return NoContent();
         }
 
-        // POST: api/DirectorsAPItroller
+        // POST: api/DirectorsAPI
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Director>> PostDirector(Director director)
@@ -84,7 +84,7 @@ namespace LogansArchive.Controllers
             return CreatedAtAction("GetDirector", new { id = director.directorId }, director);
         }
 
-        // DELETE: api/DirectorsAPItroller/5
+        // DELETE: api/DirectorsAPI/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteDirector(int id)
         {
