@@ -6,7 +6,7 @@ namespace LogansArchive.Models
     {
 
         public int studioId { get; set; }
-        public int gameId { get; set; }
+       
 
         [Required]
         public string Name { get; set; }

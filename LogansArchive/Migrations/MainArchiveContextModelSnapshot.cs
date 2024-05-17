@@ -44,7 +44,7 @@ namespace LogansArchive.Migrations
 
                     b.HasIndex("directorId1");
 
-                    b.ToTable("Directors");
+                    b.ToTable("Directors", (string)null);
                 });
 
             modelBuilder.Entity("LogansArchive.Models.Game", b =>
@@ -78,7 +78,7 @@ namespace LogansArchive.Migrations
 
                     b.HasIndex("gameId1");
 
-                    b.ToTable("Games");
+                    b.ToTable("Games", (string)null);
                 });
 
             modelBuilder.Entity("LogansArchive.Models.Movie", b =>
@@ -112,7 +112,7 @@ namespace LogansArchive.Migrations
 
                     b.HasIndex("movieId1");
 
-                    b.ToTable("Movies");
+                    b.ToTable("Movies", (string)null);
                 });
 
             modelBuilder.Entity("LogansArchive.Models.Show", b =>
@@ -149,7 +149,7 @@ namespace LogansArchive.Migrations
 
                     b.HasIndex("showId1");
 
-                    b.ToTable("Shows");
+                    b.ToTable("Shows", (string)null);
                 });
 
             modelBuilder.Entity("LogansArchive.Models.Studio", b =>
@@ -178,7 +178,7 @@ namespace LogansArchive.Migrations
 
                     b.HasIndex("studioId1");
 
-                    b.ToTable("Studios");
+                    b.ToTable("Studios", (string)null);
                 });
 
             modelBuilder.Entity("LogansArchive.Models.Director", b =>

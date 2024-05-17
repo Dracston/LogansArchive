@@ -5,8 +5,7 @@ namespace LogansArchive.Models
     public class Director
     {
         public int directorId { get; set; }
-        public int showId { get; set; }
-        public int movieId { get; set; }
+      
 
         [Required]
         public string Name { get; set; }
