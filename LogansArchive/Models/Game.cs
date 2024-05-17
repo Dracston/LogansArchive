@@ -14,7 +14,7 @@ namespace LogansArchive.Models
 
         [Required]
         [DataType(DataType.Date)]
-        public string ReleaseDate { get; set; }
+        public DateTime? ReleaseDate { get; set; }
 
         [Required]
         public string Console { get; set; }
