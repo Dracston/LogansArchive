@@ -22,7 +22,8 @@ namespace LogansArchive.Controllers
         // GET: Directors
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Directors.ToListAsync());
+            var mainArchiveContext = _context.Directors.Include(d => d.Movie).Include(d => d.Show);
+            return View(await mainArchiveContext.ToListAsync());
         }
 
         // GET: Directors/Details/5
@@ -34,6 +35,8 @@ namespace LogansArchive.Controllers
             }
 
             var director = await _context.Directors
+                .Include(d => d.Movie)
+                .Include(d => d.Show)
                 .FirstOrDefaultAsync(m => m.directorId == id);
             if (director == null)
             {
@@ -46,6 +49,8 @@ namespace LogansArchive.Controllers
         // GET: Directors/Create
         public IActionResult Create()
         {
+            ViewData["movieId"] = new SelectList(_context.Movies, "movieId", "Director");
+            ViewData["showId"] = new SelectList(_context.Shows, "showId", "Director");
             return View();
         }
 
@@ -54,7 +59,7 @@ namespace LogansArchive.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("directorId,Name,Age")] Director director)
+        public async Task<IActionResult> Create([Bind("directorId,showId,movieId,Name,Age")] Director director)
         {
             if (ModelState.IsValid)
             {
@@ -62,6 +67,8 @@ namespace LogansArchive.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["movieId"] = new SelectList(_context.Movies, "movieId", "Director", director.movieId);
+            ViewData["showId"] = new SelectList(_context.Shows, "showId", "Director", director.showId);
             return View(director);
         }
 
@@ -78,6 +85,8 @@ namespace LogansArchive.Controllers
             {
                 return NotFound();
             }
+            ViewData["movieId"] = new SelectList(_context.Movies, "movieId", "Director", director.movieId);
+            ViewData["showId"] = new SelectList(_context.Shows, "showId", "Director", director.showId);
             return View(director);
         }
 
@@ -86,7 +95,7 @@ namespace LogansArchive.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("directorId,Name,Age")] Director director)
+        public async Task<IActionResult> Edit(int id, [Bind("directorId,showId,movieId,Name,Age")] Director director)
         {
             if (id != director.directorId)
             {
@@ -113,6 +122,8 @@ namespace LogansArchive.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["movieId"] = new SelectList(_context.Movies, "movieId", "Director", director.movieId);
+            ViewData["showId"] = new SelectList(_context.Shows, "showId", "Director", director.showId);
             return View(director);
         }
 
@@ -125,6 +136,8 @@ namespace LogansArchive.Controllers
             }
 
             var director = await _context.Directors
+                .Include(d => d.Movie)
+                .Include(d => d.Show)
                 .FirstOrDefaultAsync(m => m.directorId == id);
             if (director == null)
             {

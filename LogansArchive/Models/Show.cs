@@ -10,11 +10,11 @@ namespace LogansArchive.Models
         public string Title { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime? firstDateAired { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
+        [DataType(DataType.Date)]
         public DateTime? lastDateAired { get; set; }
 
         [Required]

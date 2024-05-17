@@ -6,6 +6,7 @@ namespace LogansArchive.Models
     {
 
         public int studioId { get; set; }
+        public int gameId { get; set; }
 
         [Required]
         public string Name { get; set; }
@@ -20,5 +21,6 @@ namespace LogansArchive.Models
 
         //Collection Navigation Property
         public virtual ICollection<Studio>? Studios { get; set; }
+        public virtual Game? Game { get; set; }
     }
 }
