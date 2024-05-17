@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using LogansArchive.Data;
 using LogansArchive.Models;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 
 namespace LogansArchive.Controllers
 {
@@ -39,6 +40,9 @@ namespace LogansArchive.Controllers
             {
                 return NotFound();
             }
+
+            ViewBag.Ganes = ;
+
 
             return View(studio);
         }
