@@ -41,7 +41,7 @@ namespace LogansArchive.Controllers
                 return NotFound();
             }
 
-            ViewBag.Ganes = ;
+            
 
 
             return View(studio);
