@@ -21,6 +21,6 @@ namespace LogansArchive.Models
 
         //Collection Navigation Property
         public virtual ICollection<Studio>? Studios { get; set; }
-        public virtual Game? Game { get; set; }
+        
     }
 }

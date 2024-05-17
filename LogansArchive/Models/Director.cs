@@ -17,7 +17,6 @@ namespace LogansArchive.Models
 
        //Collection Navigation Property
        public virtual ICollection<Director>? Directors { get; set; }
-        public virtual Movie? Movie { get; set; }
-        public virtual Show? Show { get; set; }
+       
     }
 }
