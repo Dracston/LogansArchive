@@ -14,6 +14,7 @@ namespace LogansArchive.Data
         public DbSet<Movie> Movies { get; set; }
         public DbSet<Show> Shows { get; set; }
         public DbSet<Studio> Studios { get; set; }
+        public DbSet<Connection> Connections { get; set; }
 
     }
 }

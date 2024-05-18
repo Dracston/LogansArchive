@@ -40,6 +40,9 @@ namespace LogansArchive.Controllers
                 return NotFound();
             }
 
+            
+
+
             return View(studio);
         }
 

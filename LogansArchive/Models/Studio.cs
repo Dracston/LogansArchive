@@ -22,7 +22,7 @@ namespace LogansArchive.Models
         public string Address { get; set; }
 
         //Nullable Navigation Property
-        public virtual ICollection<GameStudio> GameStudios { get; set; }
+        public virtual ICollection<Connection> Connections { get; set; }
         
     }
 }
