@@ -10,22 +10,23 @@ using LogansArchive.Models;
 
 namespace LogansArchive.Controllers
 {
-    public class StudiosController : Controller
+    public class ConnectionsController : Controller
     {
         private readonly MainArchiveContext _context;
 
-        public StudiosController(MainArchiveContext context)
+        public ConnectionsController(MainArchiveContext context)
         {
             _context = context;
         }
 
-        // GET: Studios
+        // GET: Connections
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Studios.ToListAsync());
+            var mainArchiveContext = _context.Connections.Include(c => c.Game).Include(c => c.Studio);
+            return View(await mainArchiveContext.ToListAsync());
         }
 
-        // GET: Studios/Details/5
+        // GET: Connections/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -33,46 +34,45 @@ namespace LogansArchive.Controllers
                 return NotFound();
             }
 
-            var studio = await _context.Studios
-                .FirstOrDefaultAsync(m => m.studioId == id);
-            if (studio == null)
+            var connection = await _context.Connections
+                .Include(c => c.Game)
+                .Include(c => c.Studio)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (connection == null)
             {
                 return NotFound();
             }
 
-            ViewBag.Games = from s in _context.Studios
-                            join c in _context.Connections on s.studioId equals c.studioId
-                            join g in _context.Games on c.gameId equals g.gameId
-                            where s.studioId == id
-                            select g;
-
-
-            return View(studio);
+            return View(connection);
         }
 
-        // GET: Studios/Create
+        // GET: Connections/Create
         public IActionResult Create()
         {
+            ViewData["gameId"] = new SelectList(_context.Games, "gameId", "Console");
+            ViewData["studioId"] = new SelectList(_context.Studios, "studioId", "Address");
             return View();
         }
 
-        // POST: Studios/Create
+        // POST: Connections/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("studioId,Name,yearEstablished,Address")] Studio studio)
+        public async Task<IActionResult> Create([Bind("Id,gameId,studioId")] Connection connection)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(studio);
+                _context.Add(connection);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(studio);
+            ViewData["gameId"] = new SelectList(_context.Games, "gameId", "Console", connection.gameId);
+            ViewData["studioId"] = new SelectList(_context.Studios, "studioId", "Address", connection.studioId);
+            return View(connection);
         }
 
-        // GET: Studios/Edit/5
+        // GET: Connections/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -80,22 +80,24 @@ namespace LogansArchive.Controllers
                 return NotFound();
             }
 
-            var studio = await _context.Studios.FindAsync(id);
-            if (studio == null)
+            var connection = await _context.Connections.FindAsync(id);
+            if (connection == null)
             {
                 return NotFound();
             }
-            return View(studio);
+            ViewData["gameId"] = new SelectList(_context.Games, "gameId", "Console", connection.gameId);
+            ViewData["studioId"] = new SelectList(_context.Studios, "studioId", "Address", connection.studioId);
+            return View(connection);
         }
 
-        // POST: Studios/Edit/5
+        // POST: Connections/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("studioId,Name,yearEstablished,Address")] Studio studio)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,gameId,studioId")] Connection connection)
         {
-            if (id != studio.studioId)
+            if (id != connection.Id)
             {
                 return NotFound();
             }
@@ -104,12 +106,12 @@ namespace LogansArchive.Controllers
             {
                 try
                 {
-                    _context.Update(studio);
+                    _context.Update(connection);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!StudioExists(studio.studioId))
+                    if (!ConnectionExists(connection.Id))
                     {
                         return NotFound();
                     }
@@ -120,10 +122,12 @@ namespace LogansArchive.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(studio);
+            ViewData["gameId"] = new SelectList(_context.Games, "gameId", "Console", connection.gameId);
+            ViewData["studioId"] = new SelectList(_context.Studios, "studioId", "Address", connection.studioId);
+            return View(connection);
         }
 
-        // GET: Studios/Delete/5
+        // GET: Connections/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -131,34 +135,36 @@ namespace LogansArchive.Controllers
                 return NotFound();
             }
 
-            var studio = await _context.Studios
-                .FirstOrDefaultAsync(m => m.studioId == id);
-            if (studio == null)
+            var connection = await _context.Connections
+                .Include(c => c.Game)
+                .Include(c => c.Studio)
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (connection == null)
             {
                 return NotFound();
             }
 
-            return View(studio);
+            return View(connection);
         }
 
-        // POST: Studios/Delete/5
+        // POST: Connections/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var studio = await _context.Studios.FindAsync(id);
-            if (studio != null)
+            var connection = await _context.Connections.FindAsync(id);
+            if (connection != null)
             {
-                _context.Studios.Remove(studio);
+                _context.Connections.Remove(connection);
             }
 
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool StudioExists(int id)
+        private bool ConnectionExists(int id)
         {
-            return _context.Studios.Any(e => e.studioId == id);
+            return _context.Connections.Any(e => e.Id == id);
         }
     }
 }
