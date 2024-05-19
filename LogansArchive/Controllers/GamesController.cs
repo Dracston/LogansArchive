@@ -54,7 +54,7 @@ namespace LogansArchive.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("gameId,Title,ReleaseDate,Console,Studio")] Game game)
+        public async Task<IActionResult> Create([Bind("gameId,Title,ReleaseDate,Console")] Game game)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace LogansArchive.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("gameId,Title,ReleaseDate,Console,Studio")] Game game)
+        public async Task<IActionResult> Edit(int id, [Bind("gameId,Title,ReleaseDate,Console")] Game game)
         {
             if (id != game.gameId)
             {

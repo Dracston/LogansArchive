@@ -19,8 +19,7 @@ namespace LogansArchive.Models
         [Required]
         public string Console { get; set; }
 
-        [Required]
-        public string Studio { get; set; }
+       
 
         //Collection Navigation Property
         public virtual ICollection<Connection> Connections { get; set; }
