@@ -14,8 +14,8 @@ namespace LogansArchive.Models
         public string Name { get; set; }
 
         [Required]
-        [DataType(DataType.DateTime)]
-        public DateOnly yearEstablished { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime? yearEstablished { get; set; }
 
         [Required]
         

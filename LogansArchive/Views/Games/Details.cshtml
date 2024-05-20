@@ -30,6 +30,18 @@
         </dd>
     </dl>
 </div>
+
+<div class="col-md-4">
+    <h4>Developed By</h4>
+    <ul>
+        @foreach (Studio studio in ViewBag.Studios)
+        {
+            <li>@studio.Name</li>
+        }
+    </ul>
+</div>
+
+
 <div>
     <a asp-action="Edit" asp-route-id="@Model?.gameId">Edit</a> |
     <a asp-action="Index">Back to List</a>

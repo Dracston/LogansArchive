@@ -40,6 +40,12 @@ namespace LogansArchive.Controllers
                 return NotFound();
             }
 
+            ViewBag.Studios = from g in _context.Games
+                            join c in _context.Connections on g.gameId equals c.gameId
+                            join s in _context.Studios on c.studioId equals s.studioId
+                            where g.gameId == id
+                            select s;
+
             return View(game);
         }
 
