@@ -12,9 +12,9 @@ namespace LogansArchive.Controllers
 {
     public class DirectorsController : Controller
     {
-        private readonly MainArchiveContext _context;
+        private readonly SecondArchiveContext _context;
 
-        public DirectorsController(MainArchiveContext context)
+        public DirectorsController(SecondArchiveContext context)
         {
             _context = context;
         }

@@ -14,9 +14,9 @@ namespace LogansArchive.Controllers
     [ApiController]
     public class Connections1APIController : ControllerBase
     {
-        private readonly MainArchiveContext _context;
+        private readonly SecondArchiveContext _context;
 
-        public Connections1APIController(MainArchiveContext context)
+        public Connections1APIController(SecondArchiveContext context)
         {
             _context = context;
         }

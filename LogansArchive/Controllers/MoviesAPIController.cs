@@ -14,9 +14,9 @@ namespace LogansArchive.Controllers
     [ApiController]
     public class MoviesAPIController : ControllerBase
     {
-        private readonly MainArchiveContext _context;
+        private readonly SecondArchiveContext _context;
 
-        public MoviesAPIController(MainArchiveContext context)
+        public MoviesAPIController(SecondArchiveContext context)
         {
             _context = context;
         }

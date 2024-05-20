@@ -14,7 +14,7 @@ namespace LogansArchive
             builder.Services.AddControllersWithViews();
 
             // Set up the database context.
-            builder.Services.AddDbContext<MainArchiveContext>(options =>
+            builder.Services.AddDbContext<SecondArchiveContext>(options =>
                 options.UseSqlServer("Name=ConnectionStrings:DefaultConnection"));
 
             var app = builder.Build();

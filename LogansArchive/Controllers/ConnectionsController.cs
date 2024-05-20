@@ -12,9 +12,9 @@ namespace LogansArchive.Controllers
 {
     public class ConnectionsController : Controller
     {
-        private readonly MainArchiveContext _context;
+        private readonly SecondArchiveContext _context;
 
-        public ConnectionsController(MainArchiveContext context)
+        public ConnectionsController(SecondArchiveContext context)
         {
             _context = context;
         }

@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LogansArchive.Migrations
 {
-    [DbContext(typeof(MainArchiveContext))]
+    [DbContext(typeof(SecondArchiveContext))]
     partial class MainArchiveContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

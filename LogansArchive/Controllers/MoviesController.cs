@@ -12,9 +12,9 @@ namespace LogansArchive.Controllers
 {
     public class MoviesController : Controller
     {
-        private readonly MainArchiveContext _context;
+        private readonly SecondArchiveContext _context;
 
-        public MoviesController(MainArchiveContext context)
+        public MoviesController(SecondArchiveContext context)
         {
             _context = context;
         }

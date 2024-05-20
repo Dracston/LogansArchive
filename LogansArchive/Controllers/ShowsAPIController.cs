@@ -14,9 +14,9 @@ namespace LogansArchive.Controllers
     [ApiController]
     public class ShowsAPIController : ControllerBase
     {
-        private readonly MainArchiveContext _context;
+        private readonly SecondArchiveContext _context;
 
-        public ShowsAPIController(MainArchiveContext context)
+        public ShowsAPIController(SecondArchiveContext context)
         {
             _context = context;
         }

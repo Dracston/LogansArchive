@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace LogansArchive.Migrations
 {
-    [DbContext(typeof(MainArchiveContext))]
+    [DbContext(typeof(SecondArchiveContext))]
     [Migration("20240517194613_AddReleaseDateToGame")]
     partial class AddReleaseDateToGame
     {

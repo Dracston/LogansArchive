@@ -14,9 +14,9 @@ namespace LogansArchive.Controllers
     [ApiController]
     public class GamesAPIController : ControllerBase
     {
-        private readonly MainArchiveContext _context;
+        private readonly SecondArchiveContext _context;
 
-        public GamesAPIController(MainArchiveContext context)
+        public GamesAPIController(SecondArchiveContext context)
         {
             _context = context;
         }
